@@ -1,0 +1,10 @@
+{
+  "name": "restaurant",
+  "version": "1.0.0",
+  "description": "A simple restaurant application built with JavaScript",
+  "main": "index.js",
+  "repository": "git@github.com:NoTengoBattery/js-restaurant.git",
+  "author": "Oever González <software@notengobattery.com>",
+  "license": "MIT",
+  "private": true
+}
