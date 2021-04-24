@@ -1,0 +1,34 @@
+name: Linters
+
+on: [pull_request, release]
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          check-latest: true
+      - name: Setup ESLint
+        run: yarn install
+      - name: ESLint Report
+        run: npx eslint .
+  stylelint:
+    name: StyleLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          check-latest: true
+      - name: Setup Stylelint
+        run: yarn install
+      - name: Stylelint Report
+        run: npx stylelint "**/*.{sass,scss}"
