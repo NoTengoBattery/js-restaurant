@@ -1,25 +1,29 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    jest: true
   },
   extends: [
     'standard'
   ],
-  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2020,
+    ecmaFeatures: {
+      impliedStrict: true,
+      classes: true
+    },
     sourceType: 'module'
   },
   plugins: [
-    '@typescript-eslint/eslint-plugin'
-  ],
+    '@typescript-eslint/eslint-plugin',
+    'html',
+    'prettier',
+    'import'],
   ignorePatterns: [
-    '.bundle/',
     'node_modules/',
-    'public/packs*/',
-    'tmp/',
-    'vendor/bundle/'
+    'dist/'
   ],
   rules: {
   }

@@ -1,5 +1,34 @@
-module.exports = {
-    // Add you postcss configuration here
-    // Learn more about it at https://github.com/webpack-contrib/postcss-loader#config-files
-    plugins: [['autoprefixer']],
-};
+const postcss = {
+  plugins:
+    [
+      require('postcss-import'),
+      require('postcss-flexbugs-fixes'),
+      require('postcss-preset-env')({
+        autoprefixer: {
+          flexbox: 'no-2009'
+        },
+        stage: 3
+      })
+    ]
+}
+
+// Only run PurgeCSS in production Webpack builds, never on development
+if (process.env.NODE_ENV === 'production') {
+  postcss.plugins.push(
+    require('@fullhuman/postcss-purgecss')({
+      content: [
+        'index.html'
+      ],
+      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+    })
+  )
+}
+
+// Add plugins at the end of the chain
+postcss.plugins.push(
+  [
+    require('autoprefixer')
+  ]
+)
+
+module.exports = postcss

@@ -22,10 +22,7 @@
     "prettier/prettier": true
   },
   "ignoreFiles": [
-    ".bundle/**",
-    "node_modules/**",
-    "public/packs*/**",
-    "tmp/**",
-    "vendor/bundle/**"
+    "node_modules/",
+    "dist/"
   ]
 }
